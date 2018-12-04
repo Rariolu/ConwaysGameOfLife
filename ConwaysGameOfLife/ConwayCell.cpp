@@ -1,7 +1,8 @@
 #include "ConwayCell.h"
 
-ConwayCell::ConwayCell() : Sprite(TextureManager::getInstance()->GetTexture(DEFAULTLIVING))
+ConwayCell::ConwayCell(bool alive) : Sprite(alive ? TextureManager::getInstance()->GetTexture(DEFAULTLIVING) : TextureManager::getInstance()->GetTexture(DEFAULTDEAD))
 {
+	_currentState = alive;
 	_alive = TextureManager::getInstance()->GetTexture(LIVING);
 	_dead = TextureManager::getInstance()->GetTexture(DEAD);
 }

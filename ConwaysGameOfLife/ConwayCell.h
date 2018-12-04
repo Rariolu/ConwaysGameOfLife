@@ -7,7 +7,7 @@
 class ConwayCell : public Sprite
 {
 	public:
-		ConwayCell();
+		ConwayCell(bool alive);
 		~ConwayCell();
 		void Update();
 		bool GetPrevState();

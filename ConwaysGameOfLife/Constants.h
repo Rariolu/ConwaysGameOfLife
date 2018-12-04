@@ -1,6 +1,7 @@
 //Texture names
 
 #define BACKGROUND "background"
+#define DEFAULTDEAD "defaultDead"
 #define DEAD "dead"
 #define DEFAULTLIVING "defaultLiving"
 #define LIVING "living"

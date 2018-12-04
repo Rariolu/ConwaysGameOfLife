@@ -27,9 +27,10 @@ void ConwayScene::Initialise(SDL_Renderer* sdlrenderer)
 				delete cells[x][y];
 				cells[x][y] = NULL;
 			}
-			cells[x][y] = new ConwayCell();
+			bool alive = rand->NextDouble() < aliveProb;
+			cells[x][y] = new ConwayCell(alive);
 			cells[x][y]->SetPosition(x * 20, y * 20);
-			cells[x][y]->SetCurrentState(rand->NextDouble() < aliveProb);
+			//cells[x][y]->SetCurrentState(rand->NextDouble() < aliveProb);
 			cells[x][y]->SetActive(true);
 			AddSprite(cells[x][y], 10);
 		}
