@@ -16,13 +16,20 @@ ConwayScene::~ConwayScene()
 void ConwayScene::Initialise(SDL_Renderer* sdlrenderer)
 {
 	Scene::Initialise(sdlrenderer);
+	double aliveProb = rand->NextDouble();
+
 	for (int x = 0; x < ArrayWidth; x++)
 	{
 		for (int y = 0; y < ArrayHeight; y++)
 		{
+			if (cells[x][y])
+			{
+				delete cells[x][y];
+				cells[x][y] = NULL;
+			}
 			cells[x][y] = new ConwayCell();
 			cells[x][y]->SetPosition(x * 20, y * 20);
-			cells[x][y]->SetCurrentState(rand->NextDouble() < 0.25);
+			cells[x][y]->SetCurrentState(rand->NextDouble() < aliveProb);
 			cells[x][y]->SetActive(true);
 			AddSprite(cells[x][y], 10);
 		}
@@ -64,7 +71,9 @@ bool ConwayScene::GetInput()
 			case SDL_KEYDOWN:
 				switch (event.key.keysym.sym)
 				{
-					case SDLK_ESCAPE:
+					case SDLK_p:
+						SetNextScene(CONWAYSCENE);
+					default:
 						return false;
 				}
 			default:
@@ -81,17 +90,21 @@ void ConwayScene::Update(float deltaTime)
 	{
 		aggregateDelta = 0;
 		SetPrevState();
+		int living = 0;
 		for (int x = 0; x < ArrayWidth; x++)
 		{
 			for (int y = 0; y < ArrayHeight; y++)
 			{
 				cells[x][y]->Update();
+				living += cells[x][y]->GetCurrentState();
 			}
 		}
-	}
-	else
-	{
-		//std::cout << aggregateDelta << std::endl;
+		if (living < 1)
+		{
+			std::cout << "Nothing left" << std::endl;
+			SetNextScene(CONWAYSCENE);
+			//SetNextScene("None-existent next scene");
+		}
 	}
 }
 

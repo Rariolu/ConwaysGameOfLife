@@ -12,6 +12,7 @@ class ConwayCell : public Sprite
 		void Update();
 		bool GetPrevState();
 		void SetPrevState();
+		bool GetCurrentState();
 		void SetCurrentState(bool _state);
 		void AddNeighbour(ConwayCell* neighbour);
 	private:

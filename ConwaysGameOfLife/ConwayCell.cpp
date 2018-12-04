@@ -13,7 +13,6 @@ ConwayCell::~ConwayCell()
 
 void ConwayCell::SpawnLife()
 {
-	//std::cout << "Spawned" << std::endl;
 	SetTexture(_alive);
 }
 
@@ -53,6 +52,11 @@ bool ConwayCell::GetPrevState()
 void ConwayCell::SetPrevState()
 {
 	_prevState = _currentState;
+}
+
+bool ConwayCell::GetCurrentState()
+{
+	return _currentState;
 }
 
 void ConwayCell::SetCurrentState(bool _state)
