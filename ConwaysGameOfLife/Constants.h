@@ -17,3 +17,7 @@
 #define WINDOW_HEIGHT 800
 #define ArrayWidth 40
 #define ArrayHeight 40
+#define WIN32_LEAN_AND_MEAN
+#define WIN32_EXTRA_LEAN
+
+#define WINDOW_TITLE "Conway's Game of Life"

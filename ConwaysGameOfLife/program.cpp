@@ -1,11 +1,6 @@
 #include "ConwayGame.h"
 #include "SDL_Window_Manager.h"
 
-#define WIN32_LEAN_AND_MEAN
-#define WIN32_EXTRA_LEAN
-
-#define WINDOW_TITLE "Conway's Game of Life"
-
 ConwayGame* conwayGame = ConwayGame::GetInstance();
 
 SDL_Window_Manager* sdlWindowManager = SDL_Window_Manager::getInstance();
