@@ -31,7 +31,7 @@ void ConwayScene::Initialise(SDL_Renderer* sdlrenderer)
 			cells[x][y] = new ConwayCell(alive);
 			cells[x][y]->SetPosition(x * 20, y * 20);
 			cells[x][y]->SetActive(true);
-			AddSprite(cells[x][y], 10);
+			AddRenderable(cells[x][y], 10);
 		}
 	}
 	for (int x = 0; x < ArrayWidth; x++)
